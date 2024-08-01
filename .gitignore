@@ -11,13 +11,7 @@ Cargo.toml.orig
 # Output of `cargo test`
 **/target/test-logs/
 
-# Docker files
-docker-compose.yml
-docker-compose.override.yml
-Dockerfile
 
-# Node modules (if applicable)
-node_modules/
 
 # Logs
 *.log
