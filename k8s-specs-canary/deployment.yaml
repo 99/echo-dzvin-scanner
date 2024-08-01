@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rust-microservice
+  namespace: my-namespace
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: rust-microservice
+      version: stable
+  template:
+    metadata:
+      labels:
+        app: rust-microservice
+        version: stable
+    spec:
+      containers:
+        - name: rust-microservice
+          image: devnullaccount/rust-microservice:latest
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rust-microservice-canary
+  namespace: my-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rust-microservice
+      version: canary
+  template:
+    metadata:
+      labels:
+        app: rust-microservice
+        version: canary
+    spec:
+      containers:
+        - name: rust-microservice
+          image: devnullaccount/rust-microservice:canary
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"

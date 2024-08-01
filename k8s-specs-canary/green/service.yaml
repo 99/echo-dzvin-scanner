@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rust-microservice-green-service
+  namespace: my-namespace
+spec:
+  selector:
+    app: rust-microservice
+    version: green
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer

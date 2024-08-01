@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rust-microservice-config
+  namespace: rust-microservice-namespace
+data:
+  CONFIG_KEY: "value"
